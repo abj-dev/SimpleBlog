@@ -1,0 +1,36 @@
+﻿@model SimpleBlog.ViewModels.LoginViewModel
+
+@{
+    //Layout = null;
+
+    ViewBag.Title = "Login View";
+}
+
+<div>
+    <h3>Log-In View</h3>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary();
+
+    @*<div>
+        @Html.LabelFor(x => x.Email)
+        @Html.EditorFor(x => x.Email)
+    </div>*@
+
+    <div>
+        @Html.LabelFor(sb => sb.UserName)
+        @Html.EditorFor(sb => sb.UserName)
+    </div>
+
+    
+    <div>
+        @Html.LabelFor(sb => sb.Password)
+        @Html.EditorFor(sb => sb.Password)
+    </div>
+    
+    <div>
+        <input type="submit" value="Login" />
+    </div>
+}

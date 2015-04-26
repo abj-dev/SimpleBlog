@@ -1,0 +1,21 @@
+﻿@{
+    //Layout = null;
+
+    ViewBag.Title = "Posts View";
+}
+
+<div>
+    <h3>Posts View</h3>
+</div>
+<div>
+    <p>
+        <a href="@Url.RouteUrl("Login")">Click here...</a> to login!
+    </p>
+    <p>
+        @Html.RouteLink(linkText: "Click here...", routeName: "Login") to login!
+    </p>
+    <p>
+        @*@Html.ActionLink("Create Post", "CreatePostAction");*@
+    </p>
+</div>
+

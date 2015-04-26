@@ -1,0 +1,73 @@
+﻿@using System.Web.Optimization;
+
+@{
+    //const string ActiveTab = "active";
+    //const string InactiveTab = "inactive";
+
+    const string PostsTab = "Posts";
+    const string UsersTab = "Users";
+}
+
+@helper  IsTabCurrentlySelected(string currentTabName)
+{
+    if (currentTabName == ViewBag.SelectedTab)
+    {
+        @: active
+    }
+    else
+    {
+        @: inactive
+    }
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        SimpleBlog - Administrator Area
+    </title>
+
+    @Styles.Render("~/Admin/Styles")
+</head>
+<body>
+    <section class="container">
+        <header>
+            <h3 class="text-center">
+                Administrator Layout
+            </h3>
+        </header>
+
+        <ul class="nav nav-pills">
+            <li class="@IsTabCurrentlySelected(PostsTab)">
+                @*@(ViewBag.SelectedTab == PostsTab ? ActiveTab : InactiveTab)*@
+                @Html.ActionLink("Posts", "Index", "Posts", new { area = "Admin" }, new object { })
+            </li>
+            <li class="@IsTabCurrentlySelected(UsersTab)">
+                @*@(ViewBag.SelectedTab == UsersTab ? ActiveTab : InactiveTab)*@
+                @Html.ActionLink("Users", "Index", "Users", new { area = "Admin" }, new object { })
+            </li>
+            <li class="pull-right">
+                @Html.RouteLink("Back to Website...", "Home")
+            </li>
+        </ul>
+
+        <div>
+            <hr />
+            @RenderBody()
+            <hr />
+        </div>
+
+        <div>
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+    </section>
+
+
+    @Scripts.Render("~/Admin/Scripts")
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
