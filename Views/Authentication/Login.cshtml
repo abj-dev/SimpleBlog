@@ -20,8 +20,8 @@
     </div>*@
 
     <div>
-        @Html.LabelFor(sb => sb.UserName)
-        @Html.EditorFor(sb => sb.UserName)
+        @Html.LabelFor(sb => sb.Username)
+        @Html.EditorFor(sb => sb.Username)
     </div>
 
     
@@ -31,6 +31,7 @@
     </div>
     
     <div>
-        <input type="submit" value="Login" />
+        <input type="submit" value="Login"/>
+        <a href="@Url.RouteUrl("Home")">Cancel</a>
     </div>
 }

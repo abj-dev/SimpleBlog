@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+using NHibernate.Linq;
+using SimpleBlog.NHibernate;
 using SimpleBlog.ViewModels;
+using NHEntities = SimpleBlog.NHibernate.Entities;
 
 namespace SimpleBlog.Controllers
 {
@@ -14,24 +14,33 @@ namespace SimpleBlog.Controllers
         // GET: Authentication
         public ActionResult Login()
         {
-            //return Content("Logged In!");
-
-            return View(new LoginViewModel { });
+            return View(new LoginViewModel());
         }
 
         // POST: Authentication
         [HttpPost]
-        public ActionResult Login(LoginViewModel logindata, string ReturnUrl)
+        public ActionResult Login(LoginViewModel logindata, string returnUrl)
         {
+            var userToBeAuthenticated = Database.NHibernateSession.Query<NHEntities.User>().FirstOrDefault(u => u.Username == logindata.Username);
+
+            if (userToBeAuthenticated != null)
+            {
+                if (!userToBeAuthenticated.CheckPassword(logindata.Password ?? string.Empty))
+                    ModelState.AddModelError("Username", "Username or Password is incorrect");
+            }
+            else
+                NHEntities.User.InitFakeHash();
+
             if (!ModelState.IsValid)
                 return View(logindata);
 
-            FormsAuthentication.SetAuthCookie(logindata.UserName, true);
+            // ReSharper disable once PossibleNullReferenceException
+            FormsAuthentication.SetAuthCookie(userName: userToBeAuthenticated.Username, createPersistentCookie: true);
 
-            if (!string.IsNullOrWhiteSpace(ReturnUrl))
-                return Redirect(ReturnUrl);
+            if (!string.IsNullOrWhiteSpace(returnUrl))
+                return Redirect(returnUrl);
             else
-               return RedirectToRoute("Home");
+                return RedirectToRoute("Home");
         }
 
         [HttpGet]

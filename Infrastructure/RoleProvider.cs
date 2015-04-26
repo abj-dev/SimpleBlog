@@ -43,10 +43,9 @@ namespace SimpleBlog.Infrastructure
 
         public override string[] GetRolesForUser(string username)
         {
-            if (username.Equals("Joe"))
+            if (username.Equals("nelson"))
                 return new [] { "Admin" };
 
-            else
                 return new string[] { };
         }
 
