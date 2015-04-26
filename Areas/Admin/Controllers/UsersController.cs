@@ -58,7 +58,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
         }
 
         // POST: Administrator/Users
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult New(UsersNew newUserFormData)
         {
             if (Database.NHibernateSession.Query<User>().Any(u => u.Username == newUserFormData.Username))
@@ -80,7 +80,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
             return RedirectToAction("index");
         }
 
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Edit(int id, UsersEdit updatedUserFormData)
         {
             var userToBeUpdated = Database.NHibernateSession.Load<User>(id);
@@ -102,7 +102,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
             return RedirectToAction("index");
         }
 
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult ResetPassword(int id, UserResetPassword userUpdatedPasswordFormData)
         {
             var userForPasswordToBeUpdated = Database.NHibernateSession.Load<User>(id);
@@ -124,6 +124,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
             return RedirectToAction("index");
         }
 
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             var userToBeDeleted = Database.NHibernateSession.Load<User>(id);
