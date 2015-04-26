@@ -25,6 +25,14 @@ namespace SimpleBlog.NHibernate.Mappings
                          x.Column("password_hash");
                          x.NotNullable(true);
                      });
+
+            Bag(x => x.Roles,
+                x =>
+                {
+                    x.Table("role_users");
+                    x.Key(k => k.Column("user_id"));
+                },
+                x => x.ManyToMany(k => k.Column("role_id")));
         }
     }
 }

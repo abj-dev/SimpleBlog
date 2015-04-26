@@ -31,7 +31,10 @@ namespace SimpleBlog.NHibernate
             // add our mappings
             var modelMapper = new ModelMapper();
 
-            modelMapper.AddMapping<UserMap>();
+            //modelMapper.AddMapping<UserMap>();
+            //modelMapper.AddMapping<RoleMap>();
+
+            modelMapper.AddMappings(typeof(UserMap).Assembly.GetTypes());
 
             nHConfiguration.AddMapping(modelMapper.CompileMappingForAllExplicitlyAddedEntities());
 
