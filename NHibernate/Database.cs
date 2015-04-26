@@ -16,7 +16,7 @@ namespace SimpleBlog.NHibernate
         private static ISessionFactory _sessionFactory;
 
         // Properties
-        public static ISession NhSession
+        public static ISession NHibernateSession
         {
             get
             {
