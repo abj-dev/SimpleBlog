@@ -7,6 +7,7 @@ using SimpleBlog.Infrastructure;
 using SimpleBlog.NHibernate;
 using SimpleBlog.NHibernate.Entities;
 using System.Collections.Generic;
+using SimpleBlog.Helpers;
 
 namespace SimpleBlog.Areas.Admin.Controllers
 {
@@ -75,7 +76,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
         {
             var user = new User();
 
-            SyncRoles(newUserFormData.Roles, user.Roles);
+            SyncUserRoles.Sync(newUserFormData.Roles, user.Roles);
 
             if (Database.NHibernateSession.Query<User>().Any(u => u.Username == newUserFormData.Username))
                 ModelState.AddModelError("Username", "Username must be unique");
@@ -100,7 +101,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
             if (userToBeUpdated == null)
                 return HttpNotFound();
 
-            SyncRoles(updatedUserFormData.Roles, userToBeUpdated.Roles);
+            SyncUserRoles.Sync(updatedUserFormData.Roles, userToBeUpdated.Roles);
 
             if (Database.NHibernateSession.Query<User>().Any(u => u.Username == updatedUserFormData.Username && u.Id != id))
                 ModelState.AddModelError("Username", "Username must be unique");
@@ -149,31 +150,6 @@ namespace SimpleBlog.Areas.Admin.Controllers
             Database.NHibernateSession.Delete(userToBeDeleted);
 
             return RedirectToAction("index");
-        }
-
-        private void SyncRoles(IList<RoleCheckBox> checkBoxes, IList<Role> userRoles)
-        {
-            var selectedRoles = new List<Role>();
-
-            foreach (var role in Database.NHibernateSession.Query<Role>())
-            {
-                var checkBox = checkBoxes.Single(c => c.Id == role.Id);
-
-                checkBox.Name = role.Name;
-
-                if (checkBox.IsChecked)
-                    selectedRoles.Add(role);
-            }
-
-            foreach (var roleToAdd in selectedRoles.Where(sr => !userRoles.Contains(sr)))
-            {
-                userRoles.Add(roleToAdd);
-            }
-
-            foreach (var roleToRemove in userRoles.Where(cr => !selectedRoles.Contains(cr)).ToList())
-            {
-                userRoles.Remove(roleToRemove);
-            }
         }
     }
 }

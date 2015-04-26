@@ -4,6 +4,9 @@ using SimpleBlog.NHibernate.Entities;
 
 namespace SimpleBlog.Areas.Admin.ViewModels
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class RoleCheckBox
     {
         public int Id { get; set; }
@@ -11,11 +14,17 @@ namespace SimpleBlog.Areas.Admin.ViewModels
         public string Name { get; set; }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class UsersIndex
     {
         public IEnumerable<User> Users { get; set; }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class UsersNew
     {
         public IList<RoleCheckBox> Roles { get; set; }
@@ -30,6 +39,9 @@ namespace SimpleBlog.Areas.Admin.ViewModels
         public string Email { get; set; }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class UsersEdit
     {
         public IList<RoleCheckBox> Roles { get; set; }
@@ -41,6 +53,9 @@ namespace SimpleBlog.Areas.Admin.ViewModels
         public string Email { get; set; }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class UserResetPassword
     {
         public string Username { get; set; }

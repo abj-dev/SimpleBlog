@@ -4,7 +4,7 @@ using System.Web.Security;
 using NHibernate.Linq;
 using SimpleBlog.NHibernate;
 using SimpleBlog.ViewModels;
-using NHEntities = SimpleBlog.NHibernate.Entities;
+using NHibernateEntities = SimpleBlog.NHibernate.Entities;
 
 namespace SimpleBlog.Controllers
 {
@@ -14,14 +14,17 @@ namespace SimpleBlog.Controllers
         // GET: Authentication
         public ActionResult Login()
         {
-            return View(new LoginViewModel());
+            return View(new LoginViewModel
+            {
+                
+            });
         }
 
         // POST: Authentication
         [HttpPost]
         public ActionResult Login(LoginViewModel logindata, string returnUrl)
         {
-            var userToBeAuthenticated = Database.NHibernateSession.Query<NHEntities.User>().FirstOrDefault(u => u.Username == logindata.Username);
+            var userToBeAuthenticated = Database.NHibernateSession.Query<NHibernateEntities.User>().FirstOrDefault(u => u.Username == logindata.Username);
 
             if (userToBeAuthenticated != null)
             {
@@ -29,7 +32,7 @@ namespace SimpleBlog.Controllers
                     ModelState.AddModelError("Username", "Username or Password is incorrect");
             }
             else
-                NHEntities.User.InitFakeHash();
+                NHibernateEntities.User.InitFakeHash();
 
             if (!ModelState.IsValid)
                 return View(logindata);
@@ -39,8 +42,8 @@ namespace SimpleBlog.Controllers
 
             if (!string.IsNullOrWhiteSpace(returnUrl))
                 return Redirect(returnUrl);
-            else
-                return RedirectToRoute("Home");
+
+            return RedirectToRoute("Home");
         }
 
         [HttpGet]
