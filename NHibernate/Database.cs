@@ -33,6 +33,8 @@ namespace SimpleBlog.NHibernate
 
             //modelMapper.AddMapping<UserMap>();
             //modelMapper.AddMapping<RoleMap>();
+            //modelMapper.AddMapping<PostMap>();
+            //modelMapper.AddMapping<TagMap>();
 
             modelMapper.AddMappings(typeof(UserMap).Assembly.GetTypes());
 
