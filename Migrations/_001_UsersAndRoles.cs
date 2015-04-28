@@ -4,6 +4,7 @@ using FluentMigrator;
 namespace SimpleBlog.Migrations
 {
     [Migration(1)]
+    // ReSharper disable once InconsistentNaming
     public class _001_UsersAndRoles : Migration
     {
         public override void Up()

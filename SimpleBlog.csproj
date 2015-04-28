@@ -191,6 +191,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\PostsViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\UsersViewModels.cs" />
     <Compile Include="Auth\SiteAuth.cs" />
     <Compile Include="Constants\SiteConstants.cs" />
@@ -200,11 +201,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\SyncUserRoles.cs" />
+    <Compile Include="Infrastructure\PagedData.cs" />
     <Compile Include="Infrastructure\RoleProvider.cs" />
     <Compile Include="Infrastructure\SelectedTabAttribute.cs" />
     <Compile Include="Infrastructure\TransactionFilter.cs" />
     <Compile Include="Migrations\_001_UsersAndRoles.cs" />
     <Compile Include="Migrations\_002_PostsAndTags.cs" />
+    <Compile Include="Migrations\_003_AddContentToPostsTable.cs" />
     <Compile Include="NHibernate\Database.cs" />
     <Compile Include="NHibernate\Entities\Post.cs" />
     <Compile Include="NHibernate\Entities\Role.cs" />
