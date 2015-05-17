@@ -22,7 +22,7 @@ namespace SimpleBlog.Auth
                 if (user == null)
                 {
                     user =
-                        Database.NHibernateSession.Query<User>()
+                        Database.Session.Query<User>()
                             .FirstOrDefault(u => u.Username == HttpContext.Current.User.Identity.Name);
 
                     if (user == null)

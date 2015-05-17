@@ -20,14 +20,14 @@ namespace SimpleBlog
                 .Include("~/Content/Styles/Site.css"));
 
             bundles.Add(new ScriptBundle("~/Admin/Scripts")
-                .Include("~/Scripts/jquery-2.1.3.js")
+                .Include("~/Scripts/jquery-{version}.js")
                 .Include("~/Scripts/jquery.validate.js")
                 .Include("~/Scripts/jquery.validate.unobtrusive.js")
                 .Include("~/Scripts/bootstrap.js")
                 .Include("~/areas/admin/scripts/forms.js"));
 
             bundles.Add(new ScriptBundle("~/Scripts")
-                .Include("~/Scripts/jquery-2.1.3.js")
+                .Include("~/Scripts/jquery-{version}.js")
                 .Include("~/Scripts/jquery.validate.js")
                 .Include("~/Scripts/jquery.validate.unobtrusive.js")
                 .Include("~/Scripts/bootstrap.js"));

@@ -45,8 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime">
-      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="BCrypt.Net, Version=0.1.5073.29922, Culture=neutral, PublicKeyToken=6bcd409ee6bc9292, processorArchitecture=MSIL">
       <HintPath>packages\BCrypt-Official.0.1.109\lib\BCrypt.Net.dll</HintPath>
@@ -57,7 +58,7 @@
       <HintPath>packages\FluentMigrator.1.5.1.0\lib\40\FluentMigrator.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <HintPath>packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -102,11 +103,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Optimization">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
@@ -128,8 +130,9 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="WebGrease">
-      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -163,14 +166,196 @@
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Users\ResetPassword.cshtml" />
     <Content Include="Areas\Admin\Views\Users\_SelectRolePartial.cshtml" />
-    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Icon.png" />
     <Content Include="LICENSE.txt" />
+    <Content Include="packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll" />
+    <Content Include="packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.pdb" />
+    <Content Include="packages\BCrypt-Official.0.1.109\content\LICENSE.txt" />
+    <Content Include="packages\BCrypt-Official.0.1.109\lib\BCrypt.Net.dll" />
+    <Content Include="packages\BCrypt-Official.0.1.109\lib\BCrypt.Net.pdb" />
+    <Content Include="packages\BCrypt-Official.0.1.109\lib\BCrypt.Net.XML" />
+    <Content Include="packages\bootstrap.3.3.4\content\Content\bootstrap-theme.css" />
+    <Content Include="packages\bootstrap.3.3.4\content\Content\bootstrap-theme.min.css" />
+    <Content Include="packages\bootstrap.3.3.4\content\Content\bootstrap.css" />
+    <Content Include="packages\bootstrap.3.3.4\content\Content\bootstrap.min.css" />
+    <Content Include="packages\bootstrap.3.3.4\content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="packages\bootstrap.3.3.4\content\Icon.png" />
+    <Content Include="packages\bootstrap.3.3.4\content\Scripts\bootstrap.js" />
+    <Content Include="packages\bootstrap.3.3.4\content\Scripts\bootstrap.min.js" />
+    <Content Include="packages\bootstrap.3.3.4\content\Scripts\npm.js" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\lib\35\FluentMigrator.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\lib\35\FluentMigrator.pdb" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\lib\35\FluentMigrator.xml" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\lib\40\FluentMigrator.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\lib\40\FluentMigrator.pdb" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\lib\40\FluentMigrator.xml" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\amd64\sqlceca40.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\amd64\sqlcecompact40.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\amd64\sqlceer40EN.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\amd64\sqlceme40.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\amd64\sqlceqp40.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\amd64\sqlcese40.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\FirebirdSql.Data.FirebirdClient.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\FluentMigrator.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\FluentMigrator.MSBuild.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\FluentMigrator.MSBuild.pdb" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\FluentMigrator.NAnt.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\FluentMigrator.NAnt.pdb" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\FluentMigrator.pdb" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\FluentMigrator.Runner.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\FluentMigrator.Runner.pdb" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\FluentMigrator.xml" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\Migrate.exe" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\Migrate.pdb" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\Mono.Security.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\MySql.Data.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\Npgsql.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\Npgsql.pdb" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\Npgsql.XML" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\Oracle.DataAccess.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\Oracle.ManagedDataAccess.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\policy.2.0.Npgsql.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\System.Data.SQLite.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\System.Data.SqlServerCe.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\System.Data.SqlServerCe.Entity.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\x86\Microsoft.VC90.CRT\msvcr90.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\x86\Microsoft.VC90.CRT\README_ENU.txt" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\x86\sqlceca40.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\x86\sqlcecompact40.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\x86\sqlceer40EN.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\x86\sqlceme40.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\x86\sqlceqp40.dll" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\x86\sqlcese40.dll" />
+    <Content Include="packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll" />
+    <Content Include="packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.xml" />
+    <None Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4-vsdoc.js" />
+    <Content Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4.js" />
+    <Content Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4.min.js" />
+    <None Include="packages\jQuery.2.1.4\Tools\jquery-2.1.4.intellisense.js" />
+    <None Include="packages\jQuery.Validation.1.13.1\Content\Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="packages\jQuery.Validation.1.13.1\Content\Scripts\jquery.validate.js" />
+    <Content Include="packages\jQuery.Validation.1.13.1\Content\Scripts\jquery.validate.min.js" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.xml" />
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll" />
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.xml" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\system.web.optimization.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.xml" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.3\Content\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.3\Content\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="packages\Modernizr.2.8.3\Content\Scripts\modernizr-2.8.3.js" />
+    <Content Include="packages\MySql.Data.6.9.6\lib\net20-cf\MySql.Data.CF.dll" />
+    <Content Include="packages\MySql.Data.6.9.6\lib\net20\MySql.Data.dll" />
+    <Content Include="packages\MySql.Data.6.9.6\lib\net40\MySql.Data.dll" />
+    <Content Include="packages\MySql.Data.6.9.6\lib\net45\MySql.Data.dll" />
+    <Content Include="packages\MySql.Data.6.9.6\Readme.txt" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\net20\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\net35\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\netcore45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\netcore45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.xml" />
+    <Content Include="packages\NHibernate.4.0.3.4000\ConfigurationTemplates\FireBird.cfg.xml" />
+    <Content Include="packages\NHibernate.4.0.3.4000\ConfigurationTemplates\MSSQL.cfg.xml" />
+    <Content Include="packages\NHibernate.4.0.3.4000\ConfigurationTemplates\MySql.cfg.xml" />
+    <Content Include="packages\NHibernate.4.0.3.4000\ConfigurationTemplates\Oracle.cfg.xml" />
+    <Content Include="packages\NHibernate.4.0.3.4000\ConfigurationTemplates\PostgreSQL.cfg.xml" />
+    <Content Include="packages\NHibernate.4.0.3.4000\ConfigurationTemplates\SQLite.cfg.xml" />
+    <Content Include="packages\NHibernate.4.0.3.4000\ConfigurationTemplates\SybaseASE.cfg.xml" />
+    <Content Include="packages\NHibernate.4.0.3.4000\ConfigurationTemplates\SybaseSQLAnywhere.cfg.xml" />
+    <Content Include="packages\NHibernate.4.0.3.4000\lib\net40\NHibernate.dll" />
+    <Content Include="packages\NHibernate.4.0.3.4000\lib\net40\NHibernate.xml" />
+    <Content Include="packages\NHibernate.4.0.3.4000\NHibernate.license.txt" />
+    <Content Include="packages\NHibernate.4.0.3.4000\NHibernate.readme.html" />
+    <Content Include="packages\NHibernate.4.0.3.4000\NHibernate.releasenotes.txt" />
+    <Content Include="packages\WebGrease.1.6.0\lib\WebGrease.dll" />
+    <Content Include="packages\WebGrease.1.6.0\tools\WG.EXE" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-2.1.3.js" />
-    <Content Include="Scripts\jquery-2.1.3.min.js" />
-    <Content Include="Scripts\jquery-2.1.3.min.map" />
+    <Content Include="Areas\Admin\Views\Posts\Form.cshtml" />
+    <Content Include="packages\Antlr.3.5.0.2\Antlr.3.5.0.2.nupkg" />
+    <Content Include="packages\BCrypt-Official.0.1.109\BCrypt-Official.0.1.109.nupkg" />
+    <Content Include="packages\bootstrap.3.3.4\bootstrap.3.3.4.nupkg" />
+    <Content Include="packages\bootstrap.3.3.4\content\Content\bootstrap-theme.css.map" />
+    <Content Include="packages\bootstrap.3.3.4\content\Content\bootstrap.css.map" />
+    <Content Include="packages\bootstrap.3.3.4\content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages\bootstrap.3.3.4\content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="packages\bootstrap.3.3.4\content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="packages\bootstrap.3.3.4\content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\FluentMigrator.1.5.1.0.nupkg" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\Migrate.exe.config" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\policy.2.0.Npgsql.config" />
+    <Content Include="packages\FluentMigrator.1.5.1.0\tools\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+    <Content Include="packages\Iesi.Collections.4.0.1.4000\Iesi.Collections.4.0.1.4000.nupkg" />
+    <Content Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4.min.map" />
+    <Content Include="packages\jQuery.2.1.4\jQuery.2.1.4.nupkg" />
+    <Content Include="packages\jQuery.2.1.4\Tools\common.ps1" />
+    <Content Include="packages\jQuery.2.1.4\Tools\install.ps1" />
+    <Content Include="packages\jQuery.2.1.4\Tools\uninstall.ps1" />
+    <Content Include="packages\jQuery.Validation.1.13.1\jQuery.Validation.1.13.1.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\Content\Web.config.install.xdt" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\Content\Web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\Microsoft.AspNet.Mvc.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.3\Microsoft.AspNet.Razor.3.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.1.3\Microsoft.AspNet.Web.Optimization.1.1.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\Microsoft.AspNet.WebApi.Client.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\Content\web.config.transform" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\Microsoft.AspNet.WebApi.Core.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\Microsoft.AspNet.WebApi.WebHost.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\Content\Web.config.install.xdt" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\Content\Web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\Microsoft.AspNet.WebPages.3.2.3.nupkg" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.3\Microsoft.jQuery.Unobtrusive.Validation.3.2.3.nupkg" />
+    <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg" />
+    <Content Include="packages\Modernizr.2.8.3\Modernizr.2.8.3.nupkg" />
+    <Content Include="packages\Modernizr.2.8.3\Tools\common.ps1" />
+    <Content Include="packages\Modernizr.2.8.3\Tools\install.ps1" />
+    <Content Include="packages\Modernizr.2.8.3\Tools\uninstall.ps1" />
+    <Content Include="packages\MySql.Data.6.9.6\CHANGES" />
+    <Content Include="packages\MySql.Data.6.9.6\content\app.config.transform" />
+    <Content Include="packages\MySql.Data.6.9.6\content\web.config.transform" />
+    <Content Include="packages\MySql.Data.6.9.6\MySql.Data.6.9.6.nupkg" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\Newtonsoft.Json.6.0.8.nupkg" />
+    <Content Include="packages\Newtonsoft.Json.6.0.8\tools\install.ps1" />
+    <None Include="packages\NHibernate.4.0.3.4000\nhibernate-configuration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages\NHibernate.4.0.3.4000\nhibernate-mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="packages\NHibernate.4.0.3.4000\NHibernate.4.0.3.4000.nupkg" />
+    <Content Include="packages\repositories.config" />
+    <Content Include="packages\WebGrease.1.6.0\WebGrease.1.6.0.nupkg" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

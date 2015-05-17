@@ -20,7 +20,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
         {
             return View(new UsersIndex
             {
-                Users = Database.NHibernateSession.Query<User>().ToArray()
+                Users = Database.Session.Query<User>().ToArray()
             });
         }
 
@@ -28,7 +28,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
         {
             return View(new UsersNew
             {
-                Roles = Database.NHibernateSession.Query<Role>().Select(role => new RoleCheckBox
+                Roles = Database.Session.Query<Role>().Select(role => new RoleCheckBox
                 {
                     Id = role.Id,
                     IsChecked = false,
@@ -39,7 +39,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            var userToBeEdited = Database.NHibernateSession.Load<User>(id);
+            var userToBeEdited = Database.Session.Load<User>(id);
 
             if (userToBeEdited == null)
                 return HttpNotFound();
@@ -48,7 +48,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
             {
                 Username = userToBeEdited.Username,
                 Email = userToBeEdited.Email,
-                Roles = Database.NHibernateSession.Query<Role>().Select(role => new RoleCheckBox
+                Roles = Database.Session.Query<Role>().Select(role => new RoleCheckBox
                 {
                     Id = role.Id,
                     IsChecked = userToBeEdited.Roles.Contains(role),
@@ -59,7 +59,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
 
         public ActionResult ResetPassword(int id)
         {
-            var userForPasswordReset = Database.NHibernateSession.Load<User>(id);
+            var userForPasswordReset = Database.Session.Load<User>(id);
 
             if (userForPasswordReset == null)
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
 
             SyncUserRoles.Sync(newUserFormData.Roles, user.Roles);
 
-            if (Database.NHibernateSession.Query<User>().Any(u => u.Username == newUserFormData.Username))
+            if (Database.Session.Query<User>().Any(u => u.Username == newUserFormData.Username))
                 ModelState.AddModelError("Username", "Username must be unique");
 
             if (!ModelState.IsValid)
@@ -88,7 +88,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
             user.Username = newUserFormData.Username;
             user.SetPassword(newUserFormData.Password);
 
-            Database.NHibernateSession.Save(user);
+            Database.Session.Save(user);
 
             return RedirectToAction("index");
         }
@@ -96,14 +96,14 @@ namespace SimpleBlog.Areas.Admin.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Edit(int id, UsersEdit updatedUserFormData)
         {
-            var userToBeUpdated = Database.NHibernateSession.Load<User>(id);
+            var userToBeUpdated = Database.Session.Load<User>(id);
 
             if (userToBeUpdated == null)
                 return HttpNotFound();
 
             SyncUserRoles.Sync(updatedUserFormData.Roles, userToBeUpdated.Roles);
 
-            if (Database.NHibernateSession.Query<User>().Any(u => u.Username == updatedUserFormData.Username && u.Id != id))
+            if (Database.Session.Query<User>().Any(u => u.Username == updatedUserFormData.Username && u.Id != id))
                 ModelState.AddModelError("Username", "Username must be unique");
 
             if (!ModelState.IsValid)
@@ -112,7 +112,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
             userToBeUpdated.Username = updatedUserFormData.Username;
             userToBeUpdated.Email = updatedUserFormData.Email;
 
-            Database.NHibernateSession.Update(userToBeUpdated);
+            Database.Session.Update(userToBeUpdated);
 
             return RedirectToAction("index");
         }
@@ -120,7 +120,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult ResetPassword(int id, UserResetPassword userUpdatedPasswordFormData)
         {
-            var userForPasswordToBeUpdated = Database.NHibernateSession.Load<User>(id);
+            var userForPasswordToBeUpdated = Database.Session.Load<User>(id);
 
             if (userForPasswordToBeUpdated == null)
                 return HttpNotFound();
@@ -134,7 +134,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
 
             userForPasswordToBeUpdated.SetPassword(userUpdatedPasswordFormData.Password);
 
-            Database.NHibernateSession.Update(userForPasswordToBeUpdated);
+            Database.Session.Update(userForPasswordToBeUpdated);
 
             return RedirectToAction("index");
         }
@@ -142,12 +142,12 @@ namespace SimpleBlog.Areas.Admin.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            var userToBeDeleted = Database.NHibernateSession.Load<User>(id);
+            var userToBeDeleted = Database.Session.Load<User>(id);
 
             if (userToBeDeleted == null)
                 return HttpNotFound();
 
-            Database.NHibernateSession.Delete(userToBeDeleted);
+            Database.Session.Delete(userToBeDeleted);
 
             return RedirectToAction("index");
         }

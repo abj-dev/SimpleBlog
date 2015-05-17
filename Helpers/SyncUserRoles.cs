@@ -13,7 +13,7 @@ namespace SimpleBlog.Helpers
         {
             var selectedRoles = new List<Role>();
 
-            foreach (var role in Database.NHibernateSession.Query<Role>())
+            foreach (var role in Database.Session.Query<Role>())
             {
                 var checkBox = checkBoxes.Single(c => c.Id == role.Id);
 

@@ -7,15 +7,15 @@ namespace SimpleBlog.Infrastructure
     {
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            Database.NHibernateSession.BeginTransaction();
+            Database.Session.BeginTransaction();
         }
 
         public void OnActionExecuted(ActionExecutedContext filterContext)
         {
             if (filterContext.Exception == null)
-                Database.NHibernateSession.Transaction.Commit();
+                Database.Session.Transaction.Commit();
             else
-                Database.NHibernateSession.Transaction.Rollback();
+                Database.Session.Transaction.Rollback();
         }
     }
 }

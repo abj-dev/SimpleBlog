@@ -24,7 +24,7 @@ namespace SimpleBlog.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel logindata, string returnUrl)
         {
-            var userToBeAuthenticated = Database.NHibernateSession.Query<NHibernateEntities.User>().FirstOrDefault(u => u.Username == logindata.Username);
+            var userToBeAuthenticated = Database.Session.Query<NHibernateEntities.User>().FirstOrDefault(u => u.Username == logindata.Username);
 
             if (userToBeAuthenticated != null)
             {
