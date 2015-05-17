@@ -1,4 +1,4 @@
-﻿namespace SimpleBlog.Constants
+﻿namespace SimpleBlog.Infrastructure.Constants
 {
     public static class SiteConstants
     {

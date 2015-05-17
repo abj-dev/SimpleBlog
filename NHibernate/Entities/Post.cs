@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SimpleBlog.NHibernate.Entities
 {
@@ -18,6 +19,11 @@ namespace SimpleBlog.NHibernate.Entities
         public virtual bool IsDeleted
         {
             get { return DeletedAt != null; }
+        }
+
+        public Post()
+        {
+            Tags = new Collection<Tag>();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using SimpleBlog.Constants;
+using SimpleBlog.Infrastructure.Constants;
 using System.Collections.Generic;
 
 namespace SimpleBlog.NHibernate.Entities

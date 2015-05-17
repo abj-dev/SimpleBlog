@@ -62,9 +62,7 @@
     <tbody>
         @foreach (var post in Model.Posts)
         {
-            var cls = "";
-
-            cls = post.IsDeleted ? "danger" : "";
+            string cls = post.IsDeleted ? "danger" : "";
                 
             <tr class="@cls">
                 <td>@post.Title</td>
@@ -72,21 +70,21 @@
                 <td>@string.Join(", ", post.Tags.Select(t => t.Name))</td>
                 <td>@post.CreatedAt</td>
                 <td>
-                    <a href="@Url.Action("edit", new {post.Id})" class="btn btn-primary btn-xs">
+                    <a href="@Url.Action("edit", new { post.Id })" class="btn btn-primary btn-xs">
                         <i class="glyphicon glyphicon-edit"></i> Edit
                     </a>
 
                     @if (!post.IsDeleted)
                     {
                         <div class="btn btn-group btn-group-xs">
-                            <a href="@Url.Action("Trash", new {post.Id})" class="btn btn-danger" data-post="Are you sure you want to trash this post?">
+                            <a href="@Url.Action("Trash", new { post.Id, currentPage = Model.Posts.CurrentPage })" class="btn btn-danger" data-post="Are you sure you want to trash this post?">
                                 <i class="glyphicon glyphicon-remove"></i> 
                                 Trash
                             </a>
                             <a href="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="@Url.Action("Delete", new {post.Id})" data-post=" are you sure you want to delete this post permanently?">
+                                    <a href="@Url.Action("Delete", new { post.Id, currentPage = Model.Posts.CurrentPage })" data-post=" are you sure you want to delete this post permanently?">
                                         <i class="glyphicon glyphicon-remove"></i>
                                         Delete
                                     </a>
@@ -96,7 +94,7 @@
                     }
                     else
                     {
-                        <a href="@Url.Action("Restore", new {post.Id})" class="btn btn-success btn-xs" data-post="">
+                        <a href="@Url.Action("Restore", new { post.Id, currentPage = Model.Posts.CurrentPage })" class="btn btn-success btn-xs" data-post="">
                             <i class="glyphicon glyphicon-plus"></i>
                             Restore
                         </a>

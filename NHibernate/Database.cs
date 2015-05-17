@@ -2,7 +2,7 @@
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Mapping.ByCode;
-using SimpleBlog.Constants;
+using SimpleBlog.Infrastructure.Constants;
 using SimpleBlog.NHibernate.Mappings;
 
 namespace SimpleBlog.NHibernate

@@ -1,6 +1,7 @@
-﻿using SimpleBlog.Auth;
-using System;
+﻿using System;
 using System.Linq;
+
+using SimpleBlog.Infrastructure.Authentication;
 
 namespace SimpleBlog.Infrastructure
 {
@@ -45,7 +46,7 @@ namespace SimpleBlog.Infrastructure
 
         public override string[] GetRolesForUser(string username)
         {
-            return SiteAuth.CurrentUser.Roles.Select(role => role.Name).ToArray();
+            return SiteAuthManager.CurrentUser.Roles.Select(role => role.Name).ToArray();
         }
 
         public override string[] GetUsersInRole(string roleName)

@@ -1,13 +1,13 @@
 ﻿using System.Linq;
 using System.Web;
 using NHibernate.Linq;
-using SimpleBlog.Constants;
+using SimpleBlog.Infrastructure.Constants;
 using SimpleBlog.NHibernate;
 using SimpleBlog.NHibernate.Entities;
 
-namespace SimpleBlog.Auth
+namespace SimpleBlog.Infrastructure.Authentication
 {
-    public static class SiteAuth
+    public static class SiteAuthManager
     {
         // Properties
         public static User CurrentUser

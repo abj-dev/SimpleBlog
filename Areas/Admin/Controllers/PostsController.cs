@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using System.Collections.Generic;
+
 using NHibernate.Linq;
+
 using SimpleBlog.Areas.Admin.ViewModels;
 using SimpleBlog.Infrastructure;
 using SimpleBlog.NHibernate;
 using SimpleBlog.NHibernate.Entities;
+using SimpleBlog.Infrastructure.Extensions;
+using SimpleBlog.Infrastructure.Authentication;
 
 namespace SimpleBlog.Areas.Admin.Controllers
 {
@@ -13,7 +18,6 @@ namespace SimpleBlog.Areas.Admin.Controllers
     [SelectedTab("Posts")]
     public class PostsController : Controller
     {
-        // ReSharper disable once InconsistentNaming
         private const int _postsPerPage = 5;
 
         // GET: Admin/Posts
@@ -37,7 +41,13 @@ namespace SimpleBlog.Areas.Admin.Controllers
         {
             return View("Form", new PostsForm
             {
-                IsNew = true
+                IsNew = true,
+                Tags = Database.Session.Query<Tag>().Select(tag => new TagCheckbox
+                {
+                    Id = tag.Id,
+                    Name = tag.Name,
+                    IsChecked = false
+                }).ToArray()
             });
         }
 
@@ -54,7 +64,13 @@ namespace SimpleBlog.Areas.Admin.Controllers
                 PostId = id,
                 Content = post.Content,
                 Slug = post.Slug,
-                Title = post.Title
+                Title = post.Title,
+                Tags = Database.Session.Query<Tag>().Select(tag => new TagCheckbox
+                {
+                    Id = tag.Id,
+                    Name = tag.Name,
+                    IsChecked = post.Tags.Contains(tag)
+                }).ToArray()
             });
         }
         
@@ -66,14 +82,21 @@ namespace SimpleBlog.Areas.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(form);
 
+            var selectedTags = ParseTagsFromForm(form.Tags).ToArray();
+
             Post post;
             if (form.IsNew)
             {
                 post = new Post
                 {
                     CreatedAt = DateTime.UtcNow,
-                    PostingUser = Auth.SiteAuth.CurrentUser
+                    PostingUser = SiteAuthManager.CurrentUser
                 };
+
+                foreach (var tag in selectedTags)
+                {
+                    post.Tags.Add((tag));
+                }
             }
             else
             {
@@ -83,6 +106,16 @@ namespace SimpleBlog.Areas.Admin.Controllers
                     return HttpNotFound();
 
                 post.UpdatedAt = DateTime.UtcNow;
+
+                foreach (var tagToAdd in selectedTags.Where(t => !post.Tags.Contains(t)))
+                {
+                    post.Tags.Add(tagToAdd);
+                }
+
+                foreach (var tagToRemove in post.Tags.Where(t => !selectedTags.Contains(t)).ToArray())
+                {
+                    post.Tags.Remove(tagToRemove);
+                }
             }
 
             post.Title = form.Title;
@@ -95,7 +128,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult Trash(int id)
+        public ActionResult Trash(int id, int currentPage)
         {
             var post = Database.Session.Load<Post>(id);
 
@@ -106,11 +139,11 @@ namespace SimpleBlog.Areas.Admin.Controllers
             
             Database.Session.Update(post);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new {CurrentPage = currentPage});
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, int currentPage)
         {
             var post = Database.Session.Load<Post>(id);
 
@@ -119,11 +152,11 @@ namespace SimpleBlog.Areas.Admin.Controllers
 
             Database.Session.Delete(post);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { CurrentPage = currentPage });
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult Restore(int id)
+        public ActionResult Restore(int id, int currentPage)
         {
             var post = Database.Session.Load<Post>(id);
 
@@ -134,7 +167,37 @@ namespace SimpleBlog.Areas.Admin.Controllers
 
             Database.Session.Update(post);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { CurrentPage = currentPage });
+        }
+
+        private IEnumerable<Tag> ParseTagsFromForm(IEnumerable<TagCheckbox> tags)
+        {
+            foreach (var tagInfo in tags.Where(t => t.IsChecked))
+            {
+                if (tagInfo.Id != null)
+                {
+                    yield return Database.Session.Load<Tag>(tagInfo.Id);
+                    continue;
+                }
+
+                var existingTag = Database.Session.Query<Tag>().FirstOrDefault(t => t.Name == tagInfo.Name);
+
+                if (existingTag != null)
+                {
+                    yield return existingTag;
+                    continue;
+                }
+
+                var newTag = new Tag()
+                {
+                    Name = tagInfo.Name,
+                    Slug = tagInfo.Name.Slugify()
+                };
+
+                Database.Session.Save(newTag);
+
+                yield return newTag;
+            }
         }
     }
 }
