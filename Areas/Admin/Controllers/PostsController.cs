@@ -57,7 +57,8 @@ namespace SimpleBlog.Areas.Admin.Controllers
                 Title = post.Title
             });
         }
-
+        
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Form(PostsForm form)
         {
             form.IsNew = form.PostId == null;
@@ -89,6 +90,49 @@ namespace SimpleBlog.Areas.Admin.Controllers
             post.Content = form.Content;
 
             Database.Session.SaveOrUpdate(post);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Trash(int id)
+        {
+            var post = Database.Session.Load<Post>(id);
+
+            if(post == null)
+                return new HttpNotFoundResult();
+
+            post.DeletedAt = DateTime.UtcNow;
+            
+            Database.Session.Update(post);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            var post = Database.Session.Load<Post>(id);
+
+            if (post == null)
+                return new HttpNotFoundResult();
+
+            Database.Session.Delete(post);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Restore(int id)
+        {
+            var post = Database.Session.Load<Post>(id);
+
+            if (post == null)
+                return new HttpNotFoundResult();
+
+            post.DeletedAt = null;
+
+            Database.Session.Update(post);
 
             return RedirectToAction("Index");
         }
