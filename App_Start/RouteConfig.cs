@@ -12,10 +12,9 @@ namespace SimpleBlog
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            String[] _NameSpaces = new String[] { typeof(PostsController).Namespace };
+            String[] _nameSpaces = new String[] { typeof(PostsController).Namespace };
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
 
             //**Note - Commented out default route to gain more granular control over website routing.
             //routes.MapRoute(
@@ -24,11 +23,16 @@ namespace SimpleBlog
             //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             //);
 
-            routes.MapRoute("Logout", "Logout", new { controller = "Authentication", action = "Logout" }, _NameSpaces);
+            routes.MapRoute("Logout", "Logout", new { controller = "Authentication", action = "Logout" }, _nameSpaces);
+            routes.MapRoute("Login", "Login", new { controller = "Authentication", action = "Login" }, _nameSpaces);
 
-            routes.MapRoute("Login", "Login", new { controller = "Authentication", action = "Login" }, _NameSpaces);
+            routes.MapRoute("Home", "", new { controller = "Posts", action = "Index" }, _nameSpaces);
 
-            routes.MapRoute("Home", "", new { controller = "Posts", action = "Index" }, _NameSpaces);
+            routes.MapRoute("PostRealRedirectUrl", "post/{idAndSlug}", new { controller = "Posts", action = "Show" }, _nameSpaces);
+            routes.MapRoute("Post", "Post/{Id}-{slug}", new {controller = "Posts", action = "Show"}, _nameSpaces);
+
+            routes.MapRoute("TagRealRedirectUrl", "tag/{idAndSlug}", new { controller = "Posts", action = "SelectTag" }, _nameSpaces);
+            routes.MapRoute("Tag", "Tag/{Id}-{slug}", new { controller = "Posts", action = "SelectTag" }, _nameSpaces);
         }
     }
 }

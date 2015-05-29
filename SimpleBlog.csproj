@@ -627,6 +627,7 @@
     </Compile>
     <Compile Include="Helpers\SyncUserRoles.cs" />
     <Compile Include="Infrastructure\Extensions\StringExtensions.cs" />
+    <Compile Include="Infrastructure\Id_Slug_Result.cs" />
     <Compile Include="Infrastructure\PagedData.cs" />
     <Compile Include="Infrastructure\RoleProvider.cs" />
     <Compile Include="Infrastructure\SelectedTabAttribute.cs" />
@@ -645,6 +646,7 @@
     <Compile Include="NHibernate\Mappings\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AuthenticationViewModels.cs" />
+    <Compile Include="ViewModels\PostsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -660,6 +662,10 @@
     <Content Include="Content\Fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Tools\DeployDb-Dev.bat" />
     <Content Include="Tools\DeployDb-Dev-Rollback.bat" />
+    <Content Include="Views\Posts\_Posts_Partial.cshtml" />
+    <Content Include="Views\Posts\_Post_Partial.cshtml" />
+    <Content Include="Views\Posts\Show.cshtml" />
+    <Content Include="Views\Posts\SelectTag.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
