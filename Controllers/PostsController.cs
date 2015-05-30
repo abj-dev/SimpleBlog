@@ -14,7 +14,7 @@ namespace SimpleBlog.Controllers
 {
     public class PostsController : Controller
     {
-        private const Int32 PostsPerPage = 3;
+        private const Int32 PostsPerPage = 5;
 
         public ActionResult Index(int currentPage = 1)
         {

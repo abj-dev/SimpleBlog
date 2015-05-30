@@ -1,0 +1,76 @@
+﻿@using System.Web.Optimization
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title> @ViewBag.Title - My ASP.NET Application </title>
+    @Styles.Render("~/Styles")
+</head>
+<body>
+    <section class="container">
+        <header>
+            <h1 class="text-center">
+                <a href="@Url.RouteUrl("Home")">Simple Blog</a>
+                @*<i class="glyphicon glyphicon-bell"></i>*@
+            </h1>
+        </header>
+        <div>
+            <ul class="nav nav-pills">
+                <li>@Html.ActionLink("Home", "Index", "Posts")</li>
+                <li>@Html.ActionLink("About", "Index", "Posts")</li>
+                <li>@Html.ActionLink("Contact", "Index", "Posts")</li>
+
+                <li class="pull-right">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="@Url.RouteUrl("Logout")">Logout</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.RouteUrl("Login")">Login</a>
+                    }
+
+                </li>
+            </ul>
+            @*@Html.Partial("_LoginPartial")*@
+
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <br />
+                
+                <div>
+
+                    Welcome back, @User.Identity.Name...
+
+                    <a class="@(User.IsInRole("Admin") ? string.Empty : "hidden")" href="@Url.Action("Index", "Posts", new { area = "admin" })">
+                        Go to Admin Area...
+                    </a>
+                </div>
+            }
+        </div>
+
+
+        <div>
+            <hr />
+            @RenderBody()
+            <hr />
+        </div>
+
+        <div>
+            <footer>
+                <p>&copy; @DateTime.UtcNow.Year - My ASP.NET MVC Application</p>
+            </footer>
+        </div>
+    </section>
+
+    @Scripts.Render("~/Scripts");
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

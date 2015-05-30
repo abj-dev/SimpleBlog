@@ -27,13 +27,15 @@ namespace SimpleBlog
                 .Include("~/areas/admin/scripts/forms.js"));
 
             bundles.Add(new ScriptBundle("~/Admin/Post/Scripts")
-            .Include("~/areas/admin/scripts/Post_TagEditor.js"));
+                .Include("~/areas/admin/scripts/Post_TagEditor.js"));
 
             bundles.Add(new ScriptBundle("~/Scripts")
                 .Include("~/Scripts/jquery-{version}.js")
+                .Include("~/Scripts/jquery.timeago.js")
                 .Include("~/Scripts/jquery.validate.js")
                 .Include("~/Scripts/jquery.validate.unobtrusive.js")
-                .Include("~/Scripts/bootstrap.js"));
+                .Include("~/Scripts/bootstrap.js")
+                .Include("~/Scripts/frontend.js"));
         }
     }
 }

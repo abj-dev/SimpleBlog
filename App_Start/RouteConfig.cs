@@ -28,6 +28,8 @@ namespace SimpleBlog
 
             routes.MapRoute("Home", "", new { controller = "Posts", action = "Index" }, _nameSpaces);
 
+            routes.MapRoute("Sidebar", "Sidebar", new {controller = "Layout", action = "Sidebar"}, _nameSpaces);
+
             routes.MapRoute("PostRealRedirectUrl", "post/{idAndSlug}", new { controller = "Posts", action = "Show" }, _nameSpaces);
             routes.MapRoute("Post", "Post/{Id}-{slug}", new {controller = "Posts", action = "Show"}, _nameSpaces);
 
