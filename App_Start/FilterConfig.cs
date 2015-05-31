@@ -9,7 +9,9 @@ namespace SimpleBlog
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new TransactionFilter());
-            filters.Add(new HandleErrorAttribute());
+
+            // Remove the below line if handling errors manually.
+            // filters.Add(new HandleErrorAttribute());
         }
     }
 }

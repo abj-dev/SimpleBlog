@@ -42,16 +42,20 @@
         <div class="panel-heading">Welcome back, @Model.Username!</div>
         <div class="panel-body">
             <div class="btn-group btn-group-sm">
-                <a href="@Url.Action("Index", "Posts", new {area = "Admin"})" class="btn btn-default">Posts</a>
-                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="@Url.Action("New", "Posts", new { area = "Admin" })">Creat Post</a>
-                    </li>
-                </ul>
+                <a id="managePosts" type="button" href="@Url.Action("Index", "Posts", new {area = "Admin"})" class="btn btn-default">Posts</a>
+                <a id="postOptions" type="button" href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="postOptions">
+                        <li>
+                            <a href="@Url.Action("New", "Posts", new {area = "Admin"})">
+                                <i class="glyphicon glyphicon-plus-sign" style="font-size: 11px;"></i>
+                                &nbsp;Creat Post
+                            </a>
+                        </li>
+                    </ul>
             </div>
         </div>
     </div>
+
 }

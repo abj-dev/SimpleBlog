@@ -35,6 +35,10 @@ namespace SimpleBlog
 
             routes.MapRoute("TagRealRedirectUrl", "tag/{idAndSlug}", new { controller = "Posts", action = "SelectTag" }, _nameSpaces);
             routes.MapRoute("Tag", "Tag/{Id}-{slug}", new { controller = "Posts", action = "SelectTag" }, _nameSpaces);
+
+            // Error Logging Routes
+            routes.MapRoute("Error500", "errors/500", new { controller = "Errors", action = "Error" }, _nameSpaces);
+            routes.MapRoute("Error404", "errors/404", new { controller = "Errors", action = "NotFound"}, _nameSpaces);
         }
     }
 }
