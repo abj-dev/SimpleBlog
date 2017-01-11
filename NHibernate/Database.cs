@@ -1,9 +1,9 @@
-﻿using System.Web;
-using NHibernate;
+﻿using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Mapping.ByCode;
 using SimpleBlog.Infrastructure.Constants;
 using SimpleBlog.NHibernate.Mappings;
+using System.Web;
 
 namespace SimpleBlog.NHibernate
 {
@@ -25,7 +25,7 @@ namespace SimpleBlog.NHibernate
         {
             var nHConfiguration = new Configuration();
 
-            // configure the connection string
+            //-> configure the connection string from nhibernate section in web.config.
             nHConfiguration.Configure();
 
             // add our mappings
@@ -38,9 +38,15 @@ namespace SimpleBlog.NHibernate
 
             modelMapper.AddMappings(typeof(UserMap).Assembly.GetTypes());
 
+            nHConfiguration.DataBaseIntegration(dbIntegration =>
+            {
+                dbIntegration.LogFormattedSql = true;
+                dbIntegration.LogSqlInConsole = true;
+            });
+
             nHConfiguration.AddMapping(modelMapper.CompileMappingForAllExplicitlyAddedEntities());
 
-            // create session factory
+            //-> create session factory.
             _sessionFactory = nHConfiguration.BuildSessionFactory();
         }
 
@@ -53,8 +59,7 @@ namespace SimpleBlog.NHibernate
         {
             var nHSession = HttpContext.Current.Items[SiteConstants.SessionKey] as ISession;
 
-            if (nHSession != null)
-                nHSession.Close();
+            nHSession?.Close();
 
             HttpContext.Current.Items.Remove(SiteConstants.SessionKey);
         }
