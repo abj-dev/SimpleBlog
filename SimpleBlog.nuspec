@@ -8,8 +8,6 @@
         <description>Simple Blog...</description>
     </metadata>
     <files>
-        <file src="bin\*" target="bin" />
-		<file src="Tools\*" target="bin" />
-		<file src="Work_Files\Db_Scripts\SimpleBlog\*" target="bin" />
+        <file src="*" target="." />
     </files>
 </package>
