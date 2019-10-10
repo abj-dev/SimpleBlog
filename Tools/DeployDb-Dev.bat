@@ -1,1 +1,1 @@
-..\packages\FluentMigrator.1.5.1.0\tools\migrate.exe --db=mysql --target=..\bin\simpleblog.dll --configpath=..\web.config -c=MainDb
+..\packages\FluentMigrator.1.5.1.0\tools\migrate.exe --db=sqlserver --target=..\bin\simpleblog.dll --configpath=..\web.config -c=MainDb
