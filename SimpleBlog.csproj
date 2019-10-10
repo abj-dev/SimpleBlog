@@ -28,6 +28,8 @@
     <TargetFrameworkProfile />
     <Use64BitIISExpress />
     <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,6 +39,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunOctoPack>true</RunOctoPack>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -624,7 +629,6 @@
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Errors\NotFound.cshtml" />
     <Content Include="Views\Errors\Error.cshtml" />
-    <Content Include="SimpleBlog.nuspec" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -667,7 +671,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('packages\OctoPack.3.6.4\build\OctoPack.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\OctoPack.3.6.4\build\OctoPack.targets'))" />
   </Target>
+  <Import Project="packages\OctoPack.3.6.4\build\OctoPack.targets" Condition="Exists('packages\OctoPack.3.6.4\build\OctoPack.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
